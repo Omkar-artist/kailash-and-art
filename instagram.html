@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Reels | Kailash & Art</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --accent-gold: #d4af37;
+            --text-light: #e0e0e0;
+            --kailash-silver: #b0c4de;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Lora', serif; background-color: var(--primary-dark); color: var(--text-light); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Cinzel', serif; color: var(--accent-gold); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background: rgba(10, 10, 10, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid #333; }
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-container img { height: 60px; width: 60px; border-radius: 50%; border: 2px solid var(--accent-gold); object-fit: cover; }
+        .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-family: 'Cinzel', serif; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-gold); }
+        .section { padding: 120px 5% 80px 5%; text-align: center; }
+        .reels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .reel-card { background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px solid #333; }
+        .reel-card video { width: 100%; height: 450px; object-fit: cover; border-radius: 5px; }
+        .reel-card h3 { margin-top: 15px; font-size: 1.1rem; }
+        footer { text-align: center; padding: 20px; background: #050505; border-top: 1px solid #333; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <img src="1000716208.jpg" alt="Logo">
+            <h3>Kailash & Art</h3>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="instagram.html" style="color: var(--accent-gold);">Instagram Reels</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <h2>Instagram Reels</h2>
+        <p style="color: var(--kailash-silver);">Watch the creative process unfold (Auto-loaded from GitHub reels folder)</p>
+        <div id="dynamic-reels" class="reels-grid">
+            <p>Loading reels automatically...</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Omkar Vibhute | Kailash & Art. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const githubUsername = 'Omkar-artist'; 
+        const githubRepoName = 'kailash-and-art'; 
+        const reelsFolderPath = 'images/reels';
+
+        async function fetchGitHubReels() {
+            const apiUrl = `https://api.github.com/repos/${githubUsername}/${githubRepoName}/contents/${reelsFolderPath}`;
+            const reelsGrid = document.getElementById('dynamic-reels');
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const data = await response.json();
+                reelsGrid.innerHTML = ''; 
+
+                data.forEach(item => {
+                    if(item.name.match(/\.(mp4|webm|mov)$/i)) {
+                        let title = item.name.split('.')[0].replace(/-/g, ' ');
+                        const reelCard = document.createElement('div');
+                        reelCard.className = 'reel-card';
+                        reelCard.innerHTML = `
+                            <video controls>
+                                <source src="${item.download_url}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <h3>${title}</h3>
+                        `;
+                        reelsGrid.appendChild(reelCard);
+                    }
+                });
+            } catch (error) {
+                reelsGrid.innerHTML = `<p style="color: #888;">Could not load reels. Ensure your 'images/reels' folder exists in GitHub.</p>`;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', fetchGitHubReels);
+    </script>
+</body>
+</html>
