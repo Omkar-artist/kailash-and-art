@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kailash & Art | Omkar Vibhute</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YN109Y79C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9YN109Y79C');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-dark: #0a0a0a;
+            --accent-gold: #d4af37;
+            --accent-red: #8b0000;
+            --text-light: #e0e0e0;
+            --kailash-silver: #b0c4de;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 10, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 5% 40px 5%;
+            background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            gap: 50px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            border: 2px solid #333;
+            object-fit: cover;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: var(--kailash-silver);
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+            .hero-image {
+                justify-content: center;
+            }
+            .hero-text {
+                text-align: center;
+            }
+        }
+
+        .section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .content-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #151515;
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .content-box h2 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-family: sans-serif;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+        
+        .btn-instagram {
+            display: inline-block;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-family: sans-serif;
+            margin-top: 10px;
+            transition: opacity 0.3s;
+        }
+
+        .btn-instagram:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #050505;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <img src="1000716208.jpg" alt="Kailash & Art Logo">
+            <h3>Kailash & Art</h3>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" style="color: var(--accent-gold);">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="instagram.html">Instagram Reels</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-image">
+            <img src="Shiva.jpeg" alt="Divine Shiva Art">
+        </div>
+        <div class="hero-text">
+            <h1>WHERE DEVOTION MEETS THE ART</h1>
+            <p>Mythology is far more than ancient history or bedtime tales; it is the fundamental framework of human ethics, resilience, and spiritual awakening. For today's youth, navigating a rapidly changing and often chaotic digital world, these timeless epics offer a profound anchor.</p>
+            <a href="gallery.html" class="btn-whatsapp" style="background: var(--accent-red);">View Artworks</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="content-box">
+            <h2>The Tale of Ajay</h2>
+            <p>Welcome to my realm of creation. On my Instagram channel, a character named <strong>Ajay</strong> takes you on a spiritual journey. While he paints intricate scenes of ancient Indian mythology—from Nandi Maharaj to Shri Krishna—he narrates the timeless stories behind them.</p>
+            <br>
+            <p>Every brushstroke is an homage to our heritage, breathing life into the legends of Mount Kailash and beyond. Follow the journey to watch these stories unfold on canvas.</p>
+            <a href="https://www.instagram.com/kailash_and_art?igsi=MmZueWdhN3pnOTlp" target="_blank" class="btn-instagram">Watch Ajay Paint on Instagram</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Omkar Vibhute | Kailash & Art. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
