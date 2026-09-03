@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1MD7ZSTR7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Z1MD7ZSTR7');
-</script>
+<head>    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-55N65RHD');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram Reels | Kailash & Art</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+    
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-dark: #0a0a0a;
@@ -29,15 +30,50 @@
         .nav-links { display: flex; gap: 20px; flex-wrap: wrap; }
         .nav-links a { color: var(--text-light); text-decoration: none; font-family: 'Cinzel', serif; transition: color 0.3s; }
         .nav-links a:hover { color: var(--accent-gold); }
+        
         .section { padding: 120px 5% 80px 5%; text-align: center; }
-        .reels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .reel-card { background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px solid #333; text-align: left; }
-        .reel-card video { width: 100%; height: 450px; object-fit: cover; border-radius: 5px; background: #000; }
-        .reel-card h3 { margin-top: 15px; font-size: 1.1rem; }
+        
+        /* Matches the gallery grid layout structure */
+        .reels-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px; 
+        }
+        
+        /* Matches the gallery card styling */
+        .reel-card { 
+            background: #1a1a1a; 
+            padding: 15px; 
+            border-radius: 8px; 
+            border: 1px solid #333; 
+            transition: transform 0.3s, border-color 0.3s; 
+            text-align: left; 
+        }
+        .reel-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--accent-gold); 
+        }
+        
+        /* Constrains the video to fit neatly inside the card container */
+        .reel-card video { 
+            width: 100%; 
+            height: 350px; 
+            object-fit: cover; 
+            border-radius: 5px; 
+            background: #000; 
+        }
+        
+        .reel-card h3 { margin-top: 15px; font-size: 1.2rem; }
         footer { text-align: center; padding: 20px; background: #050505; border-top: 1px solid #333; margin-top: 50px; }
     </style>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-55N65RHD"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <nav>
         <div class="logo-container">
             <img src="1000716208.jpg" alt="Logo">
@@ -67,7 +103,6 @@
         const githubUsername = 'Omkar-artist'; 
         const githubRepoName = 'kailash-and-art'; 
         const reelsFolderPath = 'images/images/reels';
-        const whatsappNumber = '919373787883';
 
         async function fetchGitHubReels() {
             const apiUrl = `https://api.github.com/repos/${githubUsername}/${githubRepoName}/contents/${reelsFolderPath}`;
@@ -98,11 +133,10 @@
                     }
                 });
             } catch (error) {
-                reelsGrid.innerHTML = `<p style="color: #888;">Could not load reels. Ensure your 'images/reels' folder exists in GitHub.</p>`;
+                reelsGrid.innerHTML = `<p style="color: #888;">Could not load reels. Ensure your folder structure matches 'images/images/reels' in GitHub.</p>`;
             }
         }
         document.addEventListener('DOMContentLoaded', fetchGitHubReels);
     </script>
 </body>
-
 </html>
