@@ -21,7 +21,17 @@
             --kailash-silver: #b0c4de;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Lora', serif; background-color: var(--primary-dark); color: var(--text-light); line-height: 1.6; }
+        body { 
+            font-family: 'Lora', serif; 
+            color: var(--text-light); 
+            line-height: 1.6; 
+            
+            /* Dulls the kailash.jpg background with a dark semi-transparent overlay */
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.92)), 
+                        url('kailash.jpg') no-repeat center center fixed; 
+            background-size: cover; 
+            background-color: var(--primary-dark);
+        } 
         h1, h2, h3 { font-family: 'Cinzel', serif; color: var(--accent-gold); }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background: rgba(10, 10, 10, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid #333; }
         .logo-container { display: flex; align-items: center; gap: 15px; }
