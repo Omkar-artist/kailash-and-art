@@ -203,6 +203,26 @@
             background: #050505;
             border-top: 1px solid #333;
         }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 5%;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 12px;
+            }
+            .section {
+                padding: 140px 5% 50px 5%; /* Adds more top padding so content doesn't hide under the stacked mobile nav */
+            }
+            h1 {
+                font-size: 2rem !important; /* Prevents large heading titles from overflowing mobile screens */
+            }
+            .hero-content, .about-grid {
+                grid-template-columns: 1fr !important; /* Forces side-by-side grids to stack vertically on phones */
+            }
+        }
     </style>
 </head>
 <body>
