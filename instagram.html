@@ -136,5 +136,46 @@
         }
         document.addEventListener('DOMContentLoaded', fetchGitHubReels);
     </script>
+    <script>
+        const githubUsername = 'Omkar-artist'; 
+        const githubRepoName = 'kailash-and-art'; 
+        const reelsFolderPath = 'images/images/reels';
+
+        async function fetchGitHubReels() {
+            const apiUrl = `https://api.github.com/repos/${githubUsername}/${githubRepoName}/contents/${reelsFolderPath}`;
+            const reelsGrid = document.getElementById('dynamic-reels');
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                const data = await response.json();
+                reelsGrid.innerHTML = ''; 
+
+                // PASTE THE UPDATED LOOP HERE:
+                data.forEach(item => {
+                    if(item.name.match(/\.(mp4|webm|mov)$/i)) {
+                        let title = item.name.split('.')[0].replace(/-/g, ' ');
+                        let formattedTitle = title.charAt(0).toUpperCase() + title.slice(1);
+
+                        const reelCard = document.createElement('div');
+                        reelCard.className = 'reel-card';
+                        reelCard.innerHTML = `
+                            <video controls preload="metadata">
+                                <source src="${item.download_url}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <h3>${formattedTitle}</h3>
+                        `;
+                        reelsGrid.appendChild(reelCard);
+                    }
+                });
+
+            } catch (error) {
+                reelsGrid.innerHTML = `<p style="color: #888;">Could not load reels. Ensure your folder structure matches 'images/images/reels' in GitHub.</p>`;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', fetchGitHubReels);
+    </script>
 </body>
 </html>
