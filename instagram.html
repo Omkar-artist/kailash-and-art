@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>    <!-- Google Tag Manager -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Reels | Kailash & Art</title>
+    
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-55N65RHD');</script>
     <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Reels | Kailash & Art</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
     <style>
@@ -34,12 +36,12 @@
         /* Grid layout matching gallery */
         .reels-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 30px; 
             margin-top: 40px; 
         }
         
-        /* Individual card styling */
+        /* Compact vertical card styling matching gallery proportions */
         .reel-card { 
             background: #1a1a1a; 
             padding: 15px; 
@@ -47,22 +49,25 @@
             border: 1px solid #333; 
             transition: transform 0.3s, border-color 0.3s; 
             text-align: left; 
+            max-width: 320px; 
+            margin: 0 auto;
+            width: 100%;
         }
         .reel-card:hover { 
             transform: translateY(-10px); 
             border-color: var(--accent-gold); 
         }
         
-        /* Video sizing inside each card */
+        /* Vertical video proportions mimicking gallery card framing */
         .reel-card video { 
             width: 100%; 
-            height: 350px; 
+            height: 420px; 
             object-fit: cover; 
             border-radius: 5px; 
             background: #000; 
         }
         
-        .reel-card h3 { margin-top: 15px; font-size: 1.2rem; }
+        .reel-card h3 { margin-top: 15px; font-size: 1.1rem; }
         footer { text-align: center; padding: 20px; background: #050505; border-top: 1px solid #333; margin-top: 50px; }
     </style>
 </head>
@@ -130,47 +135,6 @@
                         reelsGrid.appendChild(reelCard);
                     }
                 });
-            } catch (error) {
-                reelsGrid.innerHTML = `<p style="color: #888;">Could not load reels. Ensure your folder structure matches 'images/images/reels' in GitHub.</p>`;
-            }
-        }
-        document.addEventListener('DOMContentLoaded', fetchGitHubReels);
-    </script>
-    <script>
-        const githubUsername = 'Omkar-artist'; 
-        const githubRepoName = 'kailash-and-art'; 
-        const reelsFolderPath = 'images/images/reels';
-
-        async function fetchGitHubReels() {
-            const apiUrl = `https://api.github.com/repos/${githubUsername}/${githubRepoName}/contents/${reelsFolderPath}`;
-            const reelsGrid = document.getElementById('dynamic-reels');
-
-            try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error('Network response was not ok');
-                
-                const data = await response.json();
-                reelsGrid.innerHTML = ''; 
-
-                // PASTE THE UPDATED LOOP HERE:
-                data.forEach(item => {
-                    if(item.name.match(/\.(mp4|webm|mov)$/i)) {
-                        let title = item.name.split('.')[0].replace(/-/g, ' ');
-                        let formattedTitle = title.charAt(0).toUpperCase() + title.slice(1);
-
-                        const reelCard = document.createElement('div');
-                        reelCard.className = 'reel-card';
-                        reelCard.innerHTML = `
-                            <video controls preload="metadata">
-                                <source src="${item.download_url}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <h3>${formattedTitle}</h3>
-                        `;
-                        reelsGrid.appendChild(reelCard);
-                    }
-                });
-
             } catch (error) {
                 reelsGrid.innerHTML = `<p style="color: #888;">Could not load reels. Ensure your folder structure matches 'images/images/reels' in GitHub.</p>`;
             }
