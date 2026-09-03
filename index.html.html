@@ -29,11 +29,16 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Lora', serif;
+        body  { 
+            font-family: 'Lora', serif; 
+            color: var(--text-light); 
+            line-height: 1.6; 
+            
+            /* Dulls the kailash.jpg background with a dark semi-transparent overlay */
+            background: linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.92)), 
+                        url('kailash.jpg') no-repeat center center fixed; 
+            background-size: cover; 
             background-color: var(--primary-dark);
-            color: var(--text-light);
-            line-height: 1.6;
         }
 
         h1, h2, h3 {
